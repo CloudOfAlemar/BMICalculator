@@ -27,8 +27,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution Link](https://your-solution-url.com)
-- Live Site URL: [Live Site Link](https://your-live-site-url.com)
+- Solution URL: [Solution Link](https://www.frontendmentor.io/solutions/bmi-calculator-3df2thMaMu)
+- Live Site URL: [Live Site Link](https://cloudofalemar.github.io/BMICalculator/)
 
 ## My process
 
