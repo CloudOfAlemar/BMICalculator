@@ -1,0 +1,835 @@
+
+:root {
+  --blue: hsl( 227, 92%, 58% );
+  --gunmetal: hsl( 215, 31%, 21% );
+  --dark-electric-blue: hsl( 215, 17%, 45% );
+  --borders: hsl( 200, 24%, 88% );
+  --white: hsl( 0, 0%, 100% );
+  --light-blue: hsla( 227, 92%, 58%, 15% );
+  --shadow: hsla( 211, 40%, 69%, 25% );
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: .625rem;
+  font-family: 'Inter', sans-serif;
+}
+
+input {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3 {
+  color: var( --gunmetal );
+}
+
+p {
+  color: var( --dark-electric-blue );
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ================================================================= */
+/* Header */
+/* ================================================================= */
+
+.header {
+  position: relative;
+  padding: 3.2rem 2.4rem 7.2rem;
+}
+
+.header .container {
+  max-width: 686px;
+  margin: 0 auto;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 640px;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    hsl( 216, 95%, 92% )
+  );
+  z-index: -1;
+  border-radius: 0px 0px 35px 35px;
+}
+
+.header-logo {
+  width: 40px;
+  display: block;
+  margin: auto;
+  margin-bottom: 2.4rem;
+}
+
+.header-content {
+  margin-bottom: 4.8rem;
+  text-align: center;
+}
+
+.header-content h1 {
+  font-size: 4.8rem;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: -.05em;
+  margin-bottom: 2.4rem;
+}
+
+.header-content p {
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+/* ========== BMI Calculator ========== */
+
+.bmi-calc {
+  background-color: var( --white );
+  border-radius: 16px;
+  padding: 2.4rem;
+  box-shadow: 16px 32px 56px var( --shadow );
+}
+
+.bmi-calc__heading {
+  text-align: center;
+  font-size: 2.4rem;
+  letter-spacing: -.05em;
+  margin-bottom: 2.4rem;
+}
+
+/* ========== Systems Row ========== */
+
+.systems-row {
+  display: flex;
+  margin-bottom: 2.4rem;
+}
+
+.system-metric,
+.system-imperial {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.system-metric input,
+.system-imperial input,
+.system-metric label,
+.system-imperial label {
+  cursor: pointer;
+}
+
+.system-metric input,
+.system-imperial input {
+  position: relative;
+  margin-right: 1.2rem;
+  width: 31px;
+  height: 31px;
+  border: 1px solid var( --borders );
+  border-radius: 50%;
+  -webkit-appearance: none;
+  transition: background-color 150ms, border-color 150ms;
+}
+
+.system-metric input:hover,
+.system-imperial input:hover {
+  border-color: var( --blue );
+}
+
+.system-metric input::before,
+.system-imperial input::before {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50% );
+  transition: background-color 150ms;
+}
+
+.system-metric input:checked,
+.system-imperial input:checked {
+  background-color: var( --light-blue );
+}
+
+.system-metric input:checked::before,
+.system-imperial input:checked::before {
+  background-color: var( --blue );
+}
+
+.system-metric label,
+.system-imperial label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 150%;
+  color: var( --gunmetal );
+}
+
+/* ========== Measurements ========== */
+
+.metric-measurements,
+.imperial-measurements {
+  margin-bottom: 2.4rem;
+}
+
+.metric-height,
+.imperial-height {
+  margin-bottom: 1.6rem;
+}
+
+.metric-height label,
+.metric-weight label,
+.imperial-height label,
+.imperial-weight label {
+  display: block;
+  color: var( --dark-electric-blue );
+  font-size: 1.4rem;
+  line-height: 150%;
+  margin-bottom: 8px;
+}
+
+.metric-height div::before,
+.metric-weight div::before,
+.imperial-ft-wrapper::before,
+.imperial-in-wrapper::before,
+.imperial-st-wrapper::before,
+.imperial-lbs-wrapper::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate( -24px, -50% );
+  color: var( --blue );
+  font-size: 2.4rem;
+  letter-spacing: -.05em;
+  font-weight: 600;
+}
+
+.metric-height input,
+.metric-weight input,
+.imperial-ft,
+.imperial-in,
+.imperial-st,
+.imperial-lbs {
+  padding: 2rem 2.4rem;
+  font-size: 2.4rem;
+  width: 100%;
+  font-weight: 600;
+  letter-spacing: -1.2px;
+  border-radius: 12px;
+  border: 1px solid var( --borders );
+  outline: none;
+}
+
+.metric-height input:focus,
+.metric-weight input:focus,
+.imperial-ft:focus,
+.imperial-in:focus,
+.imperial-st:focus,
+.imperial-lbs:focus {
+  border-color: var( --blue );
+}
+
+/* ========== Metric Measurements ========== */
+
+.metric-height div,
+.metric-weight div {
+  position: relative;
+}
+
+.metric-height div::before {
+  content: "cm";
+}
+
+.metric-weight div::before {
+  content: "kg";
+}
+
+/* ========== Imperial Measurements ========== */
+
+.imperial-height-inputs,
+.imperial-weight-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.imperial-ft-wrapper,
+.imperial-in-wrapper,
+.imperial-st-wrapper,
+.imperial-lbs-wrapper {
+  width: 47%;
+  position: relative;
+}
+
+.imperial-ft-wrapper::before {
+  content: "ft";
+}
+
+.imperial-in-wrapper::before {
+  content: "in";
+}
+
+.imperial-st-wrapper::before {
+  content: "st";
+}
+
+.imperial-lbs-wrapper::before {
+  content: "lbs";
+}
+
+/* ========== BMI Info ========== */
+
+.bmi-info {
+  background-color: var( --blue );
+  padding: 3.2rem;
+  border-radius: 16px;
+}
+
+.bmi-welcome h3,
+.bmi-welcome p {
+  color: var( --white );
+}
+
+.bmi-welcome h3 {
+  font-size: 2rem;
+  letter-spacing: -.05em;
+  margin-bottom: .8rem;
+}
+
+.bmi-welcome p {
+  font-size: 1.4rem;
+  line-height: 150%;
+}
+
+.bmi-yield,
+.bmi-result-info {
+  color: var( --white );
+}
+
+.bmi-yield {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+.bmi-yield span {
+  display: block;
+  font-size: 4.8rem;
+  line-height: 110%;
+  letter-spacing: -.05em;
+  margin-bottom: 2.4rem;
+}
+
+.bmi-result-info {
+  font-size: 1.4rem;
+  line-height: 150%;
+}
+
+.bmi-min-max {
+  font-weight: 600;
+}
+
+/* ================================================================= */
+/* BMI Insight */
+/* ================================================================= */
+
+.bmi-insight {
+  padding-bottom: 7.2rem;
+}
+
+.curved-line-left {
+  display: none;
+}
+
+.insight-image {
+  display: block;
+  width: 100%;
+  max-width: 435px;
+  margin-bottom: 4.8rem;
+}
+
+.insight-content {
+  padding: 0 2.4rem;
+}
+
+.insight-content h2 {
+  font-size: 3.2rem;
+  line-height: 110%;
+  letter-spacing: -.05em;
+  margin-bottom: 3.2rem;
+}
+
+.insight-content p {
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+/* ================================================================= */
+/* BMI Features */
+/* ================================================================= */
+
+.bmi-features {
+  background: linear-gradient(
+    135deg,
+    transparent,
+    hsla( 216, 95%, 92%, 25% )
+  );
+  padding: 5.6rem 2.9rem 5.6rem 2rem;
+}
+
+.feature {
+  margin-bottom: 4rem;
+}
+
+.feature img {
+  margin-bottom: 3.2rem;
+}
+
+.feature h3 {
+  font-size: 2.4rem;
+  letter-spacing: -.05em;
+  margin-bottom: 2.4rem;
+}
+
+.feature p {
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+/* ================================================================= */
+/* BMI Limitations */
+/* ================================================================= */
+
+.bmi-limitations {
+  padding: 7.2rem 2.9rem 7.2rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.curved-line-right {
+  display: none;
+}
+
+.limitations-content {
+  text-align: center;
+  margin-bottom: 5.6rem;
+}
+
+.limitations-content h2 {
+  font-size: 3.2rem;
+  line-height: 110%;
+  letter-spacing: -.05em;
+  margin-bottom: 3.2rem;
+}
+
+.limitations-content p {
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+.limitation {
+  margin-bottom: 2rem;
+  background-color: var( --white );
+  padding: 2.4rem;
+  border-radius: 16px;
+  box-shadow: 16px 32px 56px hsla( 211, 40%, 69%, 25% );
+}
+
+.limitation-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.6rem;
+}
+
+.limitation-header img {
+  margin-right: 1rem;
+}
+
+.limitation-header h3 {
+  font-size: 2rem;
+  letter-spacing: -.05em;
+}
+
+.limitation p {
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+/* ================================================================= */
+/* Media Queries */
+/* ================================================================= */
+
+/* Min Width 768px */
+@media screen and ( min-width: 768px ) {
+  /* ========================= */
+  /* Header */
+  /* ========================= */
+  .header {
+    padding-bottom: 9.6rem;
+  }
+
+  .header-logo {
+    margin-bottom: 4rem;
+  }
+
+  .header-content {
+    margin-bottom: 4rem;
+  }
+
+  /* BMI Calculator */
+  .bmi-calc {
+    padding: 3.2rem;
+  }
+
+  .bmi-calc__heading {
+    margin-bottom: 3.2rem;
+  }
+
+  /* Systems Row */
+  .system-row {
+    margin-bottom: 3.2rem;
+  }
+
+  /* Measurements */
+  .metric-measurements {
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr );
+    gap: 2.4rem;
+    margin-bottom: 3.2rem;
+  }
+
+  .imperial-measurements {
+    margin-bottom: 3.2rem;
+  }
+
+  .metric-height,
+  .imperial-height {
+    margin-bottom: 0;
+  }
+
+  .imperial-height {
+    margin-bottom: 3.2rem;
+  }
+
+  /* BMI Info */
+  .bmi-info {
+    border-radius: 16px 100px 100px 16px;
+  }
+
+  .bmi-results {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .bmi-yield,
+  .bmi-result-info {
+    width: 50%;
+  }
+
+  .bmi-yield span {
+    margin-bottom: 0;
+  }
+
+  /* BMI Insight */
+  .bmi-insight {
+    padding-left: 3.9rem;
+    padding-right: 3.9rem;
+    overflow: hidden;
+  }
+  
+  .bmi-insight .container {
+    max-width: 686px;
+    margin: auto;
+  }
+
+  .bmi-insight .content-wrapper {
+    position: relative;
+    left: 100%;
+    transform: translateX( -100% );
+    width: 831px;
+    display: flex;
+    align-items: center;
+  }
+
+  .insight-image {
+    width: 435px;
+    margin-right: 7.3rem;
+  }
+
+  .insight-image {
+    margin-bottom: 0;
+  }
+
+  .insight-content {
+    padding: 0;
+  }
+
+  /* BMI Features */
+  .bmi-features {
+    padding: 6rem 3.9rem;
+  }
+
+  .bmi-features .container {
+    max-width: 686px;
+    margin: auto;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+  }
+
+  .feature img {
+    margin-right: 4rem;
+    margin-bottom: 0;
+  }
+
+  /* BMI Limitations */
+  .bmi-limitations .container {
+    max-width: 686px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat( 12, 1fr );
+    column-gap: 15px;
+    row-gap: 24px;
+  }
+
+  .limitations-content {
+    grid-column: span 12;
+  }
+
+  .limitation {
+    padding: 3.2rem;
+    margin: 0;
+  }
+
+  .limitation-gender,
+  .limitation-age,
+  .limitation-muscle,
+  .limitation-pregnancy {
+    grid-column: span 6;
+  }
+
+  .limitation-race {
+    grid-column: 4 / span 6;
+    margin: 0 -15px;
+  }
+}
+
+@media screen and ( min-width: 1440px ) {
+  /* Header */
+  .header {
+    padding-top: 7.4rem;
+    padding-bottom: 10.8rem;
+  }
+  .header::before {
+    left: 2.4rem;
+    width: 978px;
+    max-height: none;
+  }
+
+  .header .container {
+    max-width: 1160px;
+  }
+
+  .header img {
+    margin: 0 0 4.3rem 0;
+    width: 64px;
+  }
+
+  .header-main-row {
+    display: grid;
+    grid-template-columns: repeat( 12, 1fr );
+    column-gap: 32px;
+  }
+
+  .header-content {
+    margin-bottom: 0;
+    grid-column: span 5;
+    text-align: left;
+    align-self: center;
+  }
+
+  .header-content h1 {
+    font-size: 6.4rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .bmi-calc {
+    grid-column: 7 / 13;
+  }
+
+  .bmi-calc__heading {
+    text-align: left;
+  }
+
+  .bmi-calc h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1.6rem;
+  }
+
+  /* BMI Insight */
+  .bmi-insight {
+    padding-top: 6.4rem;
+    padding-bottom: 9.3rem;
+  }
+
+  .bmi-insight .container {
+    max-width: 1160px;
+    position: relative;
+  }
+
+  .curved-line-left {
+    display: block;
+    position: absolute;
+    top: -100px;
+    right: 30px;
+  }
+
+  .bmi-insight .content-wrapper {
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat( 12, 1fr );
+    column-gap: 32px;
+  }
+
+  .insight-image {
+    margin-right: 0;
+    width: 100%;
+    max-width: none;
+    grid-column: span 6;
+  }
+
+  .insight-content {
+    grid-column: 8/13;
+    align-self: self-end;
+    margin-bottom: 4rem;
+  }
+
+  .insight-content h2 {
+    font-size: 4.8rem;
+  }
+
+  /* BMI Features */
+  .bmi-features {
+    max-width: 1392px;
+    margin: auto;
+    border-radius: 35px;
+    padding-top: 7.2rem;
+    padding-bottom: 9.6rem;
+  }
+
+  .bmi-features .container {
+    max-width: 1160px;
+    display: grid;
+    grid-template-columns: repeat( 12, 1fr );
+    column-gap: 32px;
+  }
+
+  .feature {
+    grid-column: span 4;
+    display: block;
+  }
+
+  .feature img {
+    margin-right: 0;
+    margin-bottom: 4.5rem;
+  }
+
+  /* BMI Limitations */
+  .bmi-limitations {
+    padding-top: 12rem;
+    padding-bottom: 7.2rem;
+  }
+
+  .bmi-limitations .container {
+    max-width: 1160px;
+    display: grid;
+    grid-template-columns: repeat( 12, 1fr );
+    grid-template-rows: repeat( 3, 1fr );
+    gap: 32px;
+    position: relative;
+  }
+
+  .curved-line-right {
+    display: block;
+    position: absolute;
+    top: 250px;
+    left: 175px;
+  }
+
+  .limitations-content {
+    text-align: left;
+    grid-column: span 6;
+    margin-bottom: 0;
+  }
+
+  .limitations-content h2 {
+    font-size: 4.8rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .limitation-gender {
+    grid-column: 8/12;
+  }
+
+  .limitation-muscle,
+  .limitation-age {
+    align-self: self-start;
+  }
+
+  .limitation-age {
+    grid-column: 5/ span 4;
+  }
+
+  .limitation-muscle {
+    grid-column: 9/ span 4;
+  }
+
+  .limitation-race,
+  .limitation-pregnancy {
+    margin-top: -48px;
+    align-self: self-start;
+  }
+
+  .limitation-pregnancy {
+    grid-column: 3/ span 4;
+  }
+
+  .limitation-race {
+    grid-column: 7/ span 4;
+    margin-left: 0;
+  }
+} 
+
+@media screen and ( min-width: 1600px ) {
+  .header::before {
+    width: 60%;
+  }
+}
+
+/* ================================================================= */
+/* Misc */
+/* ================================================================= */
+
+.hide {
+  display: none;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
